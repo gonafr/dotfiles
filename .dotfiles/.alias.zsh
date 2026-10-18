@@ -27,11 +27,11 @@ alias tree='tree -C'
 # alias ll='ls -l'
 # alias la='ls -la'
 # Using eza for enhanced ls functionality
-command -v eza NUL && alias l='eza -lah --color=always --group-directories-first --icons'
+command -v eza NUL && alias l='eza -lah --color=always --group-directories-first --icons=auto'
 command -v eza NUL && alias ls='eza --color=always --group-directories-first'
-command -v eza NUL && alias ll='eza -l --color=always --group-directories-first --icons'
-command -v eza NUL && alias la='eza -la --color=always --group-directories-first --icons'
-command -v eza NUL && alias lat='eza -la --color=always --group-directories-first --icons --sort newest --reverse'
+command -v eza NUL && alias ll='eza -l --color=always --group-directories-first --icons=auto'
+command -v eza NUL && alias la='eza -la --color=always --group-directories-first --icons=auto'
+command -v eza NUL && alias lat='eza -la --color=always --group-directories-first --icons=auto --sort newest --reverse'
 
 # File Operations
 alias cp='cp -iv'
