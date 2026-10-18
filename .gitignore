@@ -1,0 +1,64 @@
+# ========================================
+# macOS
+# ========================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+Icon?
+
+# ========================================
+# Linux
+# ========================================
+*~
+.directory
+.Trash-*
+.nfs*
+
+# ========================================
+# Windows (WSL)
+# ========================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*:Zone.Identifier
+
+# ========================================
+# Editors
+# ========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.code-workspace
+
+# ========================================
+# Node
+# ========================================
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================================
+# Logs, temp and backups
+# ========================================
+*.log
+*.tmp
+*.bak
+*.orig
+
+# ========================================
+# Secrets (never commit)
+# ========================================
+.env
+.env.local
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+.gitconfig-personal
+.gitconfig-work

@@ -1,0 +1,69 @@
+# ========================================
+# General Git Configuration
+# ========================================
+[user]
+    name = Your Name
+    email = your.email@example.com
+
+[core]
+    editor = code --wait   # Use VS Code as the default editor
+    excludesfile = ~/.gitignore_global  # Global ignore file
+    autocrlf = input  # Handle line endings correctly (useful for cross-platform projects)
+
+# Push easily. http://stackoverflow.com/a/23918418/89484
+[push]
+    default = current  # Push the current branch by default
+    followTags = true  # Push annotated tags with commits
+    autoSetupRemote = true  # Automatically set up tracking branches
+
+[checkout]
+	defaultRemote = origin
+
+[alias]
+    st = status  # Short alias for `git status`
+    co = checkout  # Short alias for `git checkout`
+    br = branch  # Short alias for `git branch`
+    ci = commit  # Short alias for `git commit`
+    amend = commit --amend  # Quickly amend the last commit
+    lg = log --oneline --graph --decorate --all  # Nice log view
+    last = log -1 HEAD  # Show the last commit
+    unstage = reset HEAD --  # Undo `git add`
+    fixup = commit --fixup  # Mark a commit for squashing
+    squash = rebase -i --autosquash  # Squash fixup commits
+
+    use-personal = "!cp ~/.gitconfig-personal ~/.gitconfig"
+    use-work = "!cp ~/.gitconfig-work ~/.gitconfig"
+
+[color]
+    ui = auto  # Enable color in terminal output
+
+[credential]
+    helper = cache --timeout=3600  # Cache credentials for 1 hour
+
+[log]
+    # https://github.com/git/git/commit/acdd37769de8b0fe37a74bfc0475b63bdc55e9dc
+	date = human
+
+# Forces Git to use SSH instead of HTTPS for GitHub repositories.
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+# Shorthand for accessing GitHub Gists via the git:// protocol.
+[url "git://gist.github.com/"]
+	insteadOf = "gist:"
+
+# Faster git server communication.
+# Like a LOT faster. https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
+[protocol]
+	version = 2
+
+# ========================================
+# Application Sourcetree
+# ========================================
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

@@ -1,0 +1,39 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "cmd+ctr+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "cmd+ctr+left",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "cmd+shift+k",
+        "command": "workbench.action.terminal.focusNext"
+    },
+    {
+        "key": "cmd+shift+j",
+        "command": "workbench.action.terminal.focusPrevious"
+    },
+    {
+        "key": "cmd+shift+u",
+        "command": "editor.action.transformToUppercase",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+shift+l",
+        "command": "editor.action.transformToLowercase",
+        "when": "editorTextFocus"
+    },
+    // Toggle between terminal and editor focus
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    }
+]
