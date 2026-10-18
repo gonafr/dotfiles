@@ -111,15 +111,28 @@ download_video() {
   local url="${1}"
   local output_name="${2:-}"
 
-  print_info "Downloading video from: ${url}"
-
-  if [[ -z "${output_name}" ]]; then
-    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4 "${url}"
-  else
-    yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4 -o "${output_name}.%(ext)s" "${url}"
+  local args=(-f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4)
+  if [[ -n "${output_name}" ]]; then
+    args+=(-o "${output_name}.%(ext)s")
   fi
 
-  print_info "Video download complete!"
+  print_info "Downloading video from: ${url}"
+
+  # YouTube occasionally rejects a session's stream URLs with HTTP 403; a fresh attempt usually succeeds
+  local attempt max_attempts=3
+  for ((attempt = 1; attempt <= max_attempts; attempt++)); do
+    if yt-dlp "${args[@]}" "${url}"; then
+      print_info "Video download complete!"
+      return 0
+    fi
+    if ((attempt < max_attempts)); then
+      print_warning "Download failed (attempt ${attempt}/${max_attempts}). Retrying in 5 seconds..."
+      sleep 5
+    fi
+  done
+
+  print_error "Download failed after ${max_attempts} attempts. Try updating yt-dlp: brew upgrade yt-dlp"
+  exit 1
 }
 
 # Show usage information
