@@ -69,7 +69,6 @@ brew install --cask \
   gimp \
   imageoptim \
   inkscape \
-  intellij-idea-ce \
   iterm2 \
   keka \
   keyclu \
@@ -81,7 +80,6 @@ brew install --cask \
   openemu \
   orbstack \
   postman \
-  sourcetree \
   crmne/tap/spotifast \
   temurin@21 \
   upscayl \
