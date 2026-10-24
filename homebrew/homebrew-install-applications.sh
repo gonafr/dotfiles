@@ -14,6 +14,7 @@ print_step "Installing Homebrew Shell applications..."
 brew install \
   bat \
   commitizen \
+  514-labs/tap/dnsglobe \
   eza \
   fastfetch \
   fd \
@@ -23,6 +24,7 @@ brew install \
   htop \
   imagemagick \
   jenv \
+  kondo \
   latexindent \
   lazygit \
   markdownlint-cli2 \
@@ -30,8 +32,9 @@ brew install \
   neovim \
   nvm \
   opencode \
-  pyenv \
+  oxker \
   pnpm \
+  pyenv \
   ripgrep \
   shellcheck \
   stow \
