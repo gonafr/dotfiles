@@ -112,10 +112,30 @@ command -v ifconfig NUL && alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?
 command -v lsof NUL && alias ports='lsof -iTCP -sTCP:LISTEN -n -P'  # Show listening TCP ports with process info
 command -v lsof NUL && alias portsall='lsof -nP -iTCP -sTCP:LISTEN,ESTABLISHED'  # Show all TCP connections
 
-
 # macOS Specific Aliases - Brew
-if [ "$(uname)" = "Darwin" ]; then
-  command -v brew NUL && alias brewup='brew update && brew upgrade && brew upgrade --cask --greedy && brew cleanup'
+# Support for brewup function to update all outdated formulae and casks, with optional exclusion of specific packages
+if [ "$(uname)" = "Darwin" ] && command -v brew NUL; then
+  unalias brewup NE
+  # Usage: brewup [-e|--exclude pkg1,pkg2 ...]
+  function brewup {
+    local -a exclude formulae casks
+    while (( $# )); do
+      case $1 in
+        -e|--exclude) exclude+=(${(s:,:)2}); shift 2 ;;
+        *) echo "Usage: brewup [-e|--exclude pkg1,pkg2]" >&2; return 1 ;;
+      esac
+    done
+
+    brew update || return
+    formulae=(${(f)"$(brew outdated --formula --quiet)"})
+    casks=(${(f)"$(brew outdated --cask --greedy --quiet)"})
+    formulae=(${formulae:|exclude})
+    casks=(${casks:|exclude})
+
+    (( $#formulae )) && brew upgrade --formula $formulae
+    (( $#casks )) && brew upgrade --cask --greedy $casks
+    brew cleanup
+  }
 fi
 
 # Show/hide hidden files in Finder
