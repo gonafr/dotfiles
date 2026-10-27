@@ -75,6 +75,10 @@ echo 'Set the icon size of the Dock to 36 pixels.'
 defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool YES
 echo 'Disable shake mouse pointer to locate.'
 
+# Set Liquid Glass to Tinted (more opaque) instead of Clear (requires logout)
+defaults write -g NSGlassTintAmount -float 1
+echo 'Set Liquid Glass to Tinted.'
+
 # ========================================
 # Keyboard defaults
 # ========================================
