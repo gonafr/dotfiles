@@ -56,14 +56,3 @@
 # Like a LOT faster. https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
 [protocol]
 	version = 2
-
-# ========================================
-# Application Sourcetree
-# ========================================
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
