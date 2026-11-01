@@ -79,6 +79,11 @@ echo 'Disable shake mouse pointer to locate.'
 defaults write -g NSGlassTintAmount -float 1
 echo 'Set Liquid Glass to Tinted.'
 
+# Disable hot corners defaults (bottom right corner that triggers Notes app)
+defaults write com.apple.dock wvous-br-corner -int 0
+defaults write com.apple.dock wvous-br-modifier -int 0
+killall Dock
+
 # ========================================
 # Keyboard defaults
 # ========================================
