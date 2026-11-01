@@ -2,18 +2,17 @@
 
 <table>
   <tr>
-    <td valign="top" style="width:64px;padding-right:16px">
-      <img src="assets/images/logo-apple.svg" alt="Logo of Apple" width="64" style="margin-bottom:20px;" />
-      <img src="assets/images/logo-ubuntu.svg" alt="Logo of Ubuntu" width="64" />
+    <td valign="top" style="width:128px;padding-right:16px">
+      <img src="assets/images/logo-apple.svg" alt="Logo of Apple" width="128" style="margin-bottom:20px;" />
+      <img src="assets/images/logo-ubuntu.svg" alt="Logo of Ubuntu" width="128" />
     </td>
     <td valign="top">
       <p>
         Configurations and scripts to set up a development environment on macOS or Ubuntu.
-        macOS uses bootstrap-macos.sh and Ubuntu uses bootstrap-ubuntu.sh, though both share common configurations and tools.
       </p>
       <p>
+        This repository is built around macOS on Apple Silicon and Ubuntu.
         The Ubuntu setup mirrors the macOS environment so both systems behave similarly.
-        Some tools and configurations work on other platforms, but this repository is built around macOS on Apple Silicon and Ubuntu.
         The dotfiles use zsh, so you should run zsh on both macOS and Ubuntu.
         The setup scripts are written in bash and run with <code>bash</code> on both platforms.
       </p>
@@ -22,7 +21,7 @@
         These are my personal dotfiles, but feel free to adapt them for your own use.
       </p>
       <p>
-        I tested this on macOS Golden Gate 27.0.1 with Apple Silicon and Ubuntu 26.04 on WSL, but it should work on other versions as well.
+        Tested on macOS Golden Gate 27.2 with Apple Silicon and Ubuntu 26.04 on WSL, but it should work on other versions as well.
       </p>
     </td>
   </tr>
@@ -35,7 +34,7 @@
   - [Prerequisites](#prerequisites)
   - [This Setup Includes](#this-setup-includes)
   - [Installation](#installation)
-    - [Backup Previous Settings (Optional - If Migrating - macOS Only)](#backup-previous-settings-optional---if-migrating---macos-only)
+    - [Back Up Previous Settings (Optional - If Migrating - macOS Only)](#back-up-previous-settings-optional---if-migrating---macos-only)
     - [Install on New Machine macOS](#install-on-new-machine-macos)
     - [Install on New Machine Ubuntu](#install-on-new-machine-ubuntu)
     - [Install on New Machine Windows WSL](#install-on-new-machine-windows-wsl)
@@ -53,7 +52,7 @@
 
 ## Prerequisites
 
-- macOS Tahoe with Apple Silicon (M1, M2, M3, M4, M5...)
+- macOS with Apple Silicon
 - Ubuntu
 - Git installed
 - Command Line Tools for Xcode installed
@@ -62,11 +61,11 @@
 
 ## This Setup Includes
 
-- **Rosetta 2**: Enables Intel macOS applications on Apple Silicon (macOS only)
+- **Rosetta 2**: Runs Intel-based apps on Apple Silicon (macOS only)
 - **Homebrew**: Package manager with essential development tools (macOS only)
 - **APT packages**: Shell tools and development utilities for Ubuntu
 - **GNU Stow**: Symlink manager used to install all dotfiles into `$HOME`
-- **Zsh Configuration**: Terminal setup with Oh My Zsh, Powerlevel10k, and custom aliases, functions, and plugins
+- **zsh Configuration**: Terminal setup with Oh My Zsh, Powerlevel10k, and custom aliases, functions, and plugins
 - **Vim & Neovim**: Editors configured with the Nord theme
 - **iTerm2 Configuration**: Color scheme and font setup (macOS only)
 - **Git Setup**: Separate configurations for personal and work profiles
@@ -76,13 +75,14 @@
 
 ## Installation
 
-> **Warning:** Back up your existing dotfiles (`~/.zshrc`, `~/.zshenv`, `~/.p10k.zsh`, etc.) before running the bootstrap scripts, then remove them from `$HOME`.
-> The dotfiles are installed with `stow --adopt`, which moves any existing file with the same name into `~/.dotfiles`, replacing the version from this repository. If you skip this step, you keep your old configuration instead of this one.
+> **Warning:** Back up your existing dotfiles (`~/.alias.zsh`, `~/.env.zsh`, `~/.functions.zsh`, `~/.markdownlint.json`, `~/.p10k.zsh`, `~/.zshenv`, `~/.zshrc`, etc.) and then remove them from your `$HOME` before running the bootstrap scripts.
+> It's important to remove your own files from `$HOME` before running the bootstrap scripts because the idea is to replace your old configuration with this one. If you skip this step, you keep your old configuration instead of this one.
+> The dotfiles are installed with `stow --restow --adopt`. `--restow` removes and recreates the symlinks, so you can safely run it again. `--adopt` moves any existing file with the same name into `~/.dotfiles`, replacing the version from this repository.
 
-### Backup Previous Settings (Optional - If Migrating - macOS Only)
+### Back Up Previous Settings (Optional - If Migrating - macOS Only)
 
 If you are migrating from another Mac, back up your settings first.
-In this example, copy your Zsh history and SSH keys to iCloud Drive so you can restore them on the new machine after setting up the dotfiles.
+In this example, copy your zsh history and SSH keys to iCloud Drive so you can restore them on the new machine after setting up the dotfiles.
 Keep your SSH keys private and delete them from iCloud Drive after restoring them on the new machine.
 If your keys are particularly sensitive, use a more secure transfer method instead, such as an encrypted external drive.
 
@@ -194,7 +194,7 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519  # adjust filename as needed
 
 ## Themes
 
-This repository includes themes based on the [Nord](https://www.nordtheme.com/) color palette.  
+This repository includes themes based on the [Nord](https://www.nordtheme.com/) color palette.
 Use the links below to visit the upstream projects and check for updates.
 Thanks to each author for their work.
 
@@ -203,15 +203,15 @@ Thanks to each author for their work.
 | iTerm2   | [Nord Wave](https://iterm2colorschemes.com/)                           | [Mark Badolato](https://github.com/mbadolato)      | ✅                  |
 | Vim      | [Nord](https://www.nordtheme.com/docs/ports/vim)                       | [Community](https://github.com/nordtheme)          | ✅                  |
 | Neovim   | [nord.nvim](https://github.com/gbprod/nord.nvim)                       | [Gilles Roustan](https://github.com/gbprod)        | ✅                  |
-| VSCode   | [Nord Deep](https://github.com/marlosirapuan/vscode-theme-nord-deep)   | [Marlos Irapuan](https://github.com/marlosirapuan) | ✅                  |
-| Fzf      | [Nord-Fzf](https://github.com/ianchesal/nord-fzf)                      | [Ian Chesal](https://github.com/ianchesal)         | ✅                  |
-| iTerm2   | [New Moon](https://github.com/taniarascia/new-moon/tree/master/iterm2) | [Tania Rascia](https://github.com/taniarascia)     | ❌                  |
-| Vim      | [New Moon](https://github.com/taniarascia/new-moon.vim)                | [Tania Rascia](https://github.com/taniarascia)     | ❌                  |
+| VS Code  | [Nord Deep](https://github.com/marlosirapuan/vscode-theme-nord-deep)   | [Marlos Irapuan](https://github.com/marlosirapuan) | ✅                  |
+| fzf      | [Nord-Fzf](https://github.com/ianchesal/nord-fzf)                      | [Ian Chesal](https://github.com/ianchesal)         | ✅                  |
+| iTerm2   | [New Moon](https://github.com/taniarascia/new-moon/tree/master/iterm2) | [Tania Rascia](https://github.com/taniarascia)     |                    |
+| Vim      | [New Moon](https://github.com/taniarascia/new-moon.vim)                | [Tania Rascia](https://github.com/taniarascia)     |                    |
 
 ## Roadmap
 
-- Make Ubuntu 26.04 compatible. ✅
-- Make macOS Golden Gate compatible. ✅
+- Support Ubuntu 26.04. ✅
+- Support macOS Golden Gate. ✅
 
 ## Contributing
 
