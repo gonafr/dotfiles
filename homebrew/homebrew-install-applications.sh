@@ -83,6 +83,7 @@ brew install --cask \
   openemu \
   orbstack \
   postman \
+  reminders-menubar \
   crmne/tap/spotifast \
   temurin@21 \
   upscayl \
