@@ -90,3 +90,5 @@ brew install --cask \
   visual-studio-code \
   vlc \
   vorssaint \
+  turutupa/tap/yames \
+  
