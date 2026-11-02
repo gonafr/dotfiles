@@ -76,6 +76,7 @@ brew install --cask \
   keka \
   keyclu \
   logi-options+ \
+  macdirstat \
   mactex-no-gui \
   microsoft-edge \
   NotProtonNot/notproton/notproton \
@@ -91,4 +92,3 @@ brew install --cask \
   vlc \
   vorssaint \
   turutupa/tap/yames \
-  
