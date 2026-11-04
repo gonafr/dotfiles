@@ -10,6 +10,7 @@ print_step "Starting bootstrap process for Ubuntu..."
 
 cd apt
 bash apt-install-applications.sh
+bash install-applications.sh
 
 # Change default shell to zsh (zsh was installed in the previous step)
 if command -v zsh &>/dev/null && [ "$SHELL" != "$(which zsh)" ]; then
