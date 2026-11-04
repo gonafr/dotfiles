@@ -6,3 +6,6 @@
 # Oxker CLI
 mkdir -p /tmp/oxker-install && cd /tmp/oxker-install
 curl https://raw.githubusercontent.com/mrjackwills/oxker/main/install.sh | bash
+
+# Oxker CLI uninstall (for future reference)
+# rm ~/.local/bin/oxker
