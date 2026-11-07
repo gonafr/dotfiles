@@ -83,6 +83,7 @@ brew install --cask \
   obs \
   openemu \
   orbstack \
+  pgadmin4 \
   postman \
   reminders-menubar \
   crmne/tap/spotifast \
