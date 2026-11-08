@@ -1,7 +1,8 @@
 #!/bin/bash
+set -o pipefail
 # ========================================
 # Script to Backup PostgreSQL Databases Running in Docker
-# Usage: ./backup-docker-postgres-databases.sh <user | user:database ...>
+# Usage: ./zip-docker-postgres-databases.sh <user | user:database ...>
 # Pass a single user (no ":") to discover and back up every database owned
 # by that user, or a list of "user:database" pairs to back up specific ones.
 
@@ -49,20 +50,17 @@ for db_config in $DATABASES; do
 
     echo "Backing up database '$DATABASE_NAME' with user '$PG_USER'..."
 
-    # Run pg_dump inside the PostgreSQL container
-    docker exec -t postgres pg_dump -U "$PG_USER" "$DATABASE_NAME" -f /tmp/${DATABASE_NAME}-backup.sql
+    OUTPUT_FILE="${DATABASE_NAME}-backup-$timestamp.sql.gz"
 
-    # Copy the SQL file from the container to the host
-    docker cp postgres:/tmp/${DATABASE_NAME}-backup.sql .
+    # Stream pg_dump from the container straight into gzip on the host.
+    # No -t here: a TTY would mangle the binary-safe output stream.
+    if ! docker exec postgres pg_dump -U "$PG_USER" "$DATABASE_NAME" | gzip > "$OUTPUT_FILE"; then
+        echo "Error: backup of '$DATABASE_NAME' failed."
+        rm -f "$OUTPUT_FILE"
+        exit 1
+    fi
 
-    # Create zip archive with timestamped filename
-    zip -j "${DATABASE_NAME}-backup-$timestamp.sql.zip" ${DATABASE_NAME}-backup.sql
-
-    # Clean up temporary files
-    rm ${DATABASE_NAME}-backup.sql
-    docker exec postgres rm /tmp/${DATABASE_NAME}-backup.sql
-
-    echo "Backup completed: ${DATABASE_NAME}-backup-$timestamp.sql.zip"
+    echo "Backup completed: $OUTPUT_FILE"
 done
 
 echo "All backups completed successfully!"
