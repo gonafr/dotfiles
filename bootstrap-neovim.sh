@@ -18,6 +18,7 @@ if [[ ! -d "$HOME/.config/nvim" ]]; then
   # Copy neovim config to ~/.config/nvim folder
   cp -R neovim/config/* $HOME/.config/nvim/lua/config
   cp -R neovim/plugins/* $HOME/.config/nvim/lua/plugins
+  cp -R neovim/linters $HOME/.config/nvim/
 else
-  print_warning "Neovim is already set up. If you want to update the configuration, please check the files in the neovim folder and copy them to ~/.config/nvim/lua/config and ~/.config/nvim/lua/plugins."
+  print_warning "Neovim is already set up. If you want to update the configuration, please check the files in the neovim folder and copy them to ~/.config/nvim/lua/config, ~/.config/nvim/lua/plugins and ~/.config/nvim/linters."
 fi

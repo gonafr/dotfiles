@@ -1,0 +1,2 @@
+# markdownlint rules used by Neovim (nvim-lint / markdownlint-cli2)
+MD013: false
