@@ -26,8 +26,8 @@ sudo apt install -y \
   git \
   htop \
   lsof \
-  net-tools \
   neovim \
+  net-tools \
   openjdk-21-jdk \
   python3 \
   python3-pip \
@@ -35,6 +35,7 @@ sudo apt install -y \
   shellcheck \
   stow \
   tealdeer \
+  tmux \
   tree \
   zoxide \
   zsh

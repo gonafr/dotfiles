@@ -40,6 +40,7 @@ brew install \
   stow \
   telnet \
   tldr \
+  tmux \
   tree \
   zoxide
 
