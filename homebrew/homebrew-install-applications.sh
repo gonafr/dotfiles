@@ -64,6 +64,7 @@ brew install --cask \
   1password \
   appcleaner \
   balenaetcher \
+  claude-code \
   copilot-cli \
   crossover \
   cyberduck \
