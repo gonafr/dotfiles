@@ -213,3 +213,5 @@ if command -v pyenv &>/dev/null; then
     pyenv "$@"
   }
 fi
+
+export PATH="$HOME/.local/bin:$PATH"
