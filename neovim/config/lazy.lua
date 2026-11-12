@@ -39,9 +39,6 @@ require("lazy").setup({
 		-- ui
 		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
 		{
-			import = "lazyvim.plugins.extras.lang.java",
-		},
-		{
 			"mason-org/mason.nvim",
 			build = ":MasonUpdate",
 			config = function()
