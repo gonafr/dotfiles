@@ -42,6 +42,7 @@ brew install \
   tldr \
   tmux \
   tree \
+  tree-sitter-cli \
   zoxide
 
 # Enable jenv plugins required for JAVA_HOME to update dynamically
