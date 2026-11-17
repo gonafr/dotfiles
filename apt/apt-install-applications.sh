@@ -25,6 +25,7 @@ sudo apt install -y \
   fzf \
   git \
   htop \
+  imagemagick \
   lsof \
   neovim \
   net-tools \
