@@ -65,6 +65,7 @@ brew install --cask \
   1password \
   appcleaner \
   balenaetcher \
+  claude \
   claude-code \
   copilot-cli \
   crossover \
