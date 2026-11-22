@@ -74,6 +74,7 @@ brew install --cask \
   discord \
   font-hack-nerd-font \
   gimp \
+  handy \
   imageoptim \
   inkscape \
   iterm2 \
