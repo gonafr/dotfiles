@@ -75,6 +75,7 @@ brew install --cask \
   font-hack-nerd-font \
   gimp \
   handy \
+  hazeover \
   imageoptim \
   inkscape \
   iterm2 \
